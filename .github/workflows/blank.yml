@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Stacie Shop - Acc Game Uy Tín</title>
+  <style>
+    /* Reset */
+    * {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
+    body {background:#0a0a0a; color:#fff; scroll-behavior:smooth;}
+
+    /* Header */
+    header {position:fixed; top:0; left:0; right:0; background:#111; display:flex; justify-content:space-between; align-items:center; padding:10px 20px; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.8);}
+    header h1 {color:#7d5fff; text-shadow:0 0 10px #7d5fff;}
+    nav a {color:#ccc; margin:0 10px; text-decoration:none; transition:0.3s;}
+    nav a:hover {color:#7d5fff; text-shadow:0 0 5px #7d5fff;}
+
+    /* Hero */
+    .hero {height:60vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(135deg,#111,#222); padding:20px; margin-top:60px;}
+    .hero h2 {font-size:2em; color:#7d5fff; text-shadow:0 0 15px #7d5fff;}
+    .hero p {color:#ccc; margin-top:10px;}
+
+    /* Section */
+    .game-section {padding:60px 20px; text-align:center;}
+    .game-section h2 {font-size:2em; margin-bottom:20px; color:#7d5fff;}
+
+    /* Products */
+    .products {display:flex; justify-content:center; flex-wrap:wrap; gap:20px;}
+    .card {background:#1a1a1a; border:1px solid #333; border-radius:15px; padding:20px; width:250px; text-align:center; box-shadow:0 0 15px rgba(125,95,255,0.2); transition:0.3s;}
+    .card img {width:100%; border-radius:10px; margin-bottom:15px;}
+    .card h3 {margin:10px 0; color:#fff;}
+    .card p {color:#aaa; font-size:0.9em;}
+    .price {display:block; margin:10px 0; font-weight:bold; color:#7d5fff;}
+    .buy-btn {background:#7d5fff; border:none; color:#fff; padding:10px 15px; border-radius:10px; cursor:pointer; transition:0.3s;}
+    .buy-btn:hover {background:#9f80ff; box-shadow:0 0 15px #7d5fff; transform:translateY(-3px);}
+
+    /* Cart */
+    #cart {background:#111; border-radius:15px; padding:20px; margin-top:40px;}
+    #cart-items {list-style:none; margin:20px 0;}
+    #cart-items li {margin:5px 0; color:#ddd;}
+
+    /* Popup */
+    .popup {display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;}
+    .popup-content {background:#1a1a1a; padding:30px; border-radius:15px; text-align:center; box-shadow:0 0 20px #7d5fff; position:relative;}
+    #close-popup {position:absolute; top:10px; right:20px; font-size:2em; cursor:pointer; color:#fff;}
+
+    /* Footer */
+    footer {background:#111; text-align:center; padding:20px; margin-top:40px; color:#777;}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>🎮 Stacie Shop 🎮</h1>
+    <nav>
+      <a href="#lienquan">Liên Quân</a>
+      <a href="#freefire">Free Fire</a>
+      <a href="#roblox">Roblox</a>
+      <a href="#cart">🛒 Giỏ hàng</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Acc Game Uy Tín - Giá Rẻ - Random Nick</h2>
+    <p>Chọn game bạn muốn và bắt đầu săn acc ngay!</p>
+  </section>
+
+  <!-- Liên Quân -->
+  <section id="lienquan" class="game-section">
+    <h2>Liên Quân Mobile</h2>
+    <div class="products">
+      <div class="card" data-name="Acc Liên Quân 1xx Skin" data-price="199000">
+        <img src="https://i.ibb.co/nDyT9Kr/butterfly.jpg" alt="Liên Quân 1xx">
+        <h3>Acc 1xx Trang Phục</h3>
+        <p>Nick random 1xx trang phục cực xịn.</p>
+        <span class="price">199.000đ</span>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+      <div class="card" data-name="Acc Liên Quân 2xx Skin" data-price="299000">
+        <img src="https://i.ibb.co/3T6H7yf/nakroth.jpg" alt="Liên Quân 2xx">
+        <h3>Acc 2xx Trang Phục</h3>
+        <p>Nick random 2xx trang phục cực vip.</p>
+        <span class="price">299.000đ</span>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+      <div class="card" data-name="Acc Liên Quân 3xx Skin" data-price="499000">
+        <img src="https://i.ibb.co/ZMmxXcB/tulen.jpg" alt="Liên Quân 3xx">
+        <h3>Acc 3xx Trang Phục</h3>
+        <p>Nick random 3xx trang phục siêu vip.</p>
+        <span class="price">499.000đ</span>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Fire -->
+  <section id="freefire" class="game-section">
+    <h2>Free Fire</h2>
+    <div class="products">
+      <div class="card" data-name="Acc Free Fire Skin Súng" data-price="150000">
+        <img src="https://i.ibb.co/fCMbz6b/freefire.jpg" alt="Free Fire">
+        <h3>Acc Skin Súng</h3>
+        <p>Nick random có skin súng vip.</p>
+        <span class="price">150.000đ</span>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roblox -->
+  <section id="roblox" class="game-section">
+    <h2>Roblox</h2>
+    <div class="products">
+      <div class="card" data-name="Acc Roblox 1000 Robux" data-price="100000">
+        <img src="https://i.ibb.co/dMppFyp/roblox.jpg" alt="Roblox">
+        <h3>Acc Roblox 1000 Robux</h3>
+        <p>Nick random có sẵn 1000 Robux.</p>
+        <span class="price">100.000đ</span>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Giỏ hàng -->
+  <section id="cart" class="game-section">
+    <h2>🛒 Giỏ hàng của bạn</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Tổng tiền:</strong> <span id="cart-total">0</span> đ</p>
+  </section>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="close-popup">&times;</span>
+      <h2>🎉 Bạn vừa mua acc thành công!</h2>
+      <p id="popup-text"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Stacie Shop | Liên hệ: support@stacieshop.com</p>
+  </footer>
+
+  <script>
+    // Cart
+    let cart = [];
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+
+    // Popup
+    const popup = document.getElementById("popup");
+    const popupText = document.getElementById("popup-text");
+    const closePopup = document.getElementById("close-popup");
+
+    // Random nick giả lập
+    const randomAccounts = [
+      "nick_anhhung123",
+      "acc_tulen_pro",
+      "freefire_skin_vip",
+      "roblox_robux1000",
+      "lienquan_skin300"
+    ];
+
+    // Buy button click
+    document.querySelectorAll(".buy-btn").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const card = e.target.closest(".card");
+        const name = card.dataset.name;
+        const price = parseInt(card.dataset.price);
+
+        // Add to cart
+        cart.push({ name, price });
+        renderCart();
+
+        // Random acc
+        const acc = randomAccounts[Math.floor(Math.random() * randomAccounts.length)];
+        popupText.innerText = `Bạn vừa mua: ${name}\nNick random: ${acc}`;
+        popup.style.display = "flex";
+      });
+    });
+
+    // Render cart
+    function renderCart() {
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = `${item.name} - ${item.price.toLocaleString()}đ`;
+        cartItems.appendChild(li);
+        total += item.price;
+      });
+      cartTotal.innerText = total.toLocaleString();
+    }
+
+    // Close popup
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+
+    // Close popup khi click ngoài
+    popup.addEventListener("click", e => {
+      if (e.target === popup) popup.style.display = "none";
+    });
+  </script>
+</body>
+</html>
