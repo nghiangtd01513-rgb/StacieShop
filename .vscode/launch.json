@@ -12,7 +12,7 @@
             "webRoot": "${workspaceFolder}"
         }
     ]
-}
+  }
 <!doctype html>
 <html lang="vi">
 <head>
