@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stacie Shop — Acc Game (Dark Gaming)</title>
+<meta name="description" content="Stacie Shop - bán acc Liên Quân, Free Fire, Roblox. Giao diện dark gaming chuyên nghiệp." />
+<style>
+  :root{
+    --bg:#07060a;
+    --panel:#0f1720;
+    --muted:#9aa6b2;
+    --neon-1: #7c3aed; /* purple */
+    --neon-2: #00d4ff; /* cyan */
+    --accent:#ffb86b;
+    --glass: rgba(255,255,255,0.03);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, #04050a 0%, #071026 60%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Header */
+  header{
+    position:fixed; inset:0 0 auto 0; height:72px; display:flex; align-items:center; z-index:80;
+    width:100%; background: linear-gradient(90deg, rgba(10,12,20,0.6), rgba(8,10,18,0.45));
+    border-bottom:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(6px);
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:48px;height:48px;border-radius:10px;
+    background:linear-gradient(135deg,var(--neon-1),var(--neon-2));
+    display:grid;place-items:center;font-weight:800;color:#04101a;
+    box-shadow: 0 4px 18px rgba(124,58,237,0.18), 0 6px 30px rgba(0,212,255,0.06);
+  }
+  .brand h1{font-size:18px;margin:0;letter-spacing:0.2px}
+  nav{display:flex;gap:8px;align-items:center}
+  nav a{
+    color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; font-size:14px;
+  }
+  nav a:hover{color:#fff; background:linear-gradient(90deg, rgba(124,58,237,0.08), rgba(0,212,255,0.04))}
+
+  /* Hero */
+  .hero{
+    margin-top:92px;
+    max-width:1200px; margin-left:auto; margin-right:auto; padding:40px 20px 32px;
+    display:grid; grid-template-columns: 1fr 420px; gap:24px; align-items:center;
+  }
+  .hero-left h2{font-size:34px; margin:0 0 10px; line-height:1.05; color: #fff;}
+  .hero-left p{color:var(--muted); margin-bottom:18px;}
+  .cta-row{display:flex;gap:12px}
+  .btn-cta{
+    padding:12px 18px; border-radius:12px; font-weight:700; letter-spacing:0.2px; cursor:pointer;
+    border:0; color:#071426; background:linear-gradient(90deg,var(--neon-2),var(--neon-1));
+    box-shadow: 0 8px 30px rgba(0,212,255,0.08), 0 6px 20px rgba(124,58,237,0.06);
+  }
+  .btn-ghost{padding:12px 16px;border-radius:12px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);cursor:pointer}
+
+  .hero-right{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+  }
+  .wallet{display:flex;justify-content:space-between;align-items:center}
+  .wallet .bal{font-weight:800;font-size:20px;color:var(--neon-1)}
+  .small{color:var(--muted);font-size:13px}
+
+  /* Sections */
+  main{max-width:1200px;margin:20px auto;padding:20px}
+  section.block{padding:36px;border-radius:16px;margin-bottom:22px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(255,255,255,0.02)}
+  .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .section-title h3{margin:0;font-size:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+
+  /* Card */
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px; overflow:hidden; position:relative; border:1px solid rgba(255,255,255,0.03);
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+  .card:hover{transform:translateY(-10px); box-shadow:0 20px 40px rgba(2,8,20,0.6)}
+  .card .imgwrap{height:160px; background:#06101a; display:grid;place-items:center}
+  .card img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .body{padding:14px}
+  .tag{display:inline-block;padding:6px 8px;border-radius:999px;font-size:12px;color: #041426;background: linear-gradient(90deg,var(--neon-2),var(--neon-1)); box-shadow: 0 6px 18px rgba(124,58,237,0.08)}
+  .title{font-size:16px;margin:10px 0 6px}
+  .desc{color:var(--muted);font-size:13px;margin-bottom:10px}
+  .price{font-weight:800;color:var(--accent);font-size:16px;margin-bottom:10px}
+  .card .actions{display:flex;gap:10px;align-items:center}
+  .btn-buy{
+    background: linear-gradient(90deg,var(--neon-1),var(--neon-2));
+    border:0;padding:10px 12px;border-radius:10px;color:#061026;font-weight:800;cursor:pointer;box-shadow:0 8px 20px rgba(124,58,237,0.06)
+  }
+  .btn-info{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+  /* Section backgrounds accent */
+  #lienquan{background: linear-gradient(180deg, rgba(124,58,237,0.02), transparent)}
+  #freefire{background: linear-gradient(180deg, rgba(255,152,0,0.02), transparent)}
+  #roblox{background: linear-gradient(180deg, rgba(0,212,255,0.02), transparent)}
+
+  /* Modal */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,20,0.6);display:none;align-items:center;justify-content:center;z-index:120}
+  .modal{width:100%;max-width:520px;background:linear-gradient(180deg,#08101a,#061022);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+  .modal h4{margin:0 0 8px}
+  .modal .meta{color:var(--muted);font-size:13px;margin-bottom:12px}
+  .modal .result{background:linear-gradient(90deg,var(--neon-2),var(--neon-1));padding:12px;border-radius:10px;color:#041026;font-weight:800}
+
+  /* floating chat */
+  .chat{
+    position:fixed; right:18px; bottom:18px; width:56px;height:56px;border-radius:999px;
+    background:linear-gradient(90deg,var(--neon-2),var(--neon-1)); display:grid;place-items:center;cursor:pointer;
+    z-index:100; box-shadow:0 12px 30px rgba(0,212,255,0.08)
+  }
+
+  /* responsive */
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr; padding:28px 18px}
+    header .wrap{padding:8px 12px}
+    .hero-right{order:2}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap" role="banner">
+    <div class="brand">
+      <div class="logo" aria-hidden>SS</div>
+      <div>
+        <h1>Stacie Shop</h1>
+        <div style="font-size:12px;color:var(--muted)">Acc Game • Liên Quân • Free Fire • Roblox</div>
+      </div>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Trang chủ</a>
+      <a href="#lienquan">Liên Quân</a>
+      <a href="#freefire">Free Fire</a>
+      <a href="#roblox">Roblox</a>
+      <a href="#contact" style="margin-left:12px;border-left:1px solid rgba(255,255,255,0.03);padding-left:12px;color:var(--muted)">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero" aria-labelledby="home-title">
+  <div class="hero-left">
+    <h2 id="home-title">Stacie Shop — Acc Game chuyên nghiệp</h2>
+    <p class="small">Uy tín — Nhanh chóng — Bảo hành. Chúng tôi cung cấp tài khoản Liên Quân, Free Fire, Roblox với bảo hành demo và hỗ trợ đổi nếu có lỗi.</p>
+    <div class="cta-row" style="margin-top:18px">
+      <button class="btn-cta" onclick="document.getElementById('lienquan').scrollIntoView({behavior:'smooth'})">Mua Liên Quân</button>
+      <button class="btn-ghost" onclick="document.getElementById('freefire').scrollIntoView({behavior:'smooth'})">Xem Free Fire</button>
+    </div>
+
+    <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+      <div style="background:var(--glass);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+        <div class="small">Tổng giao dịch</div>
+        <div style="font-weight:800">+120.000+</div>
+      </div>
+      <div style="background:var(--glass);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+        <div class="small">Đánh giá</div>
+        <div style="font-weight:800">4.9/5</div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-right" aria-label="Wallet & info">
+    <div class="wallet">
+      <div>
+        <div class="small">Số dư demo</div>
+        <div class="bal" id="ui-balance">200.000₫</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-ghost" onclick="changeBalance(50000)">+50k</button>
+        <button class="btn-ghost" onclick="changeBalance(-50000)">-50k</button>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;border-radius:10px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02)">
+      <div class="small">Bảo hành</div>
+      <div style="font-weight:800;margin-top:6px">7 ngày đổi lỗi (demo)</div>
+      <div style="margin-top:10px" class="small">Lưu ý: Đây là template demo. Tích hợp thanh toán & backend cần phát triển thêm.</div>
+    </div>
+  </aside>
+</section>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- LIÊN QUÂN -->
+  <section id="lienquan" class="block" aria-labelledby="lq-title">
+    <div class="section-title">
+      <h3 id="lq-title">Acc Liên Quân</h3>
+      <div class="small">Acc 1xx / 2xx / 3xx trang phục — có bảo hành demo</div>
+    </div>
+
+    <div class="grid">
+      <!-- 1xx -->
+      <article class="card" data-game="lienquan" data-id="lq-1xx">
+        <div class="imgwrap">
+          <img src="https://cdn.oneesports.vn/cdn-data/sites/4/2024/06/Lien-Quan-Mobile-Butterfly-1.jpg" alt="Acc LQ 1xx">
+        </div>
+        <div class="body">
+          <div class="tag">Liên Quân</div>
+          <div class="title">Acc 1xx trang phục</div>
+          <div class="desc">Khoảng 100–199 trang phục, mix skin thường & hiếm.</div>
+          <div class="price">199.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Liên Quân 1xx trang phục',199000,'https://cdn.oneesports.vn/cdn-data/sites/4/2024/06/Lien-Quan-Mobile-Butterfly-1.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Liên Quân 1xx trang phục','Chi tiết: tài khoản chưa bind, yêu cầu quay video khi nhận để bảo hành.')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2xx -->
+      <article class="card" data-game="lienquan" data-id="lq-2xx">
+        <div class="imgwrap">
+          <img src="https://cdn.oneesports.vn/cdn-data/sites/4/2024/01/Nakroth-Quan-Vuong.jpg" alt="Acc LQ 2xx">
+        </div>
+        <div class="body">
+          <div class="tag">Liên Quân</div>
+          <div class="title">Acc 2xx trang phục</div>
+          <div class="desc">Khoảng 200–299 trang phục, nhiều skin SSS/SS.</div>
+          <div class="price">299.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Liên Quân 2xx trang phục',299000,'https://cdn.oneesports.vn/cdn-data/sites/4/2024/01/Nakroth-Quan-Vuong.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Liên Quân 2xx trang phục','Chi tiết: tài khoản có nhiều skin hiếm, hỗ trợ đổi trong 7 ngày')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3xx -->
+      <article class="card" data-game="lienquan" data-id="lq-3xx">
+        <div class="imgwrap">
+          <img src="https://cdn.oneesports.vn/cdn-data/sites/4/2024/06/Tulen-Skin-Lien-Quan.jpg" alt="Acc LQ 3xx">
+        </div>
+        <div class="body">
+          <div class="tag">Liên Quân</div>
+          <div class="title">Acc 3xx trang phục</div>
+          <div class="desc">300+ trang phục, acc VIP, skin độc quyền.</div>
+          <div class="price">499.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Liên Quân 3xx trang phục',499000,'https://cdn.oneesports.vn/cdn-data/sites/4/2024/06/Tulen-Skin-Lien-Quan.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Liên Quân 3xx trang phục','Chi tiết: acc VIP, hỗ trợ sau bán (demo).')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FREE FIRE -->
+  <section id="freefire" class="block" aria-labelledby="ff-title">
+    <div class="section-title">
+      <h3 id="ff-title">Acc Free Fire</h3>
+      <div class="small">Skin súng, nhân vật, full VIP</div>
+    </div>
+
+    <div class="grid">
+      <article class="card" data-game="freefire" data-id="ff-1">
+        <div class="imgwrap"><img src="https://cdn.oneesports.vn/cdn-data/sites/4/2024/03/FreeFire-Skin-Sung.jpg" alt="FF skin súng"></div>
+        <div class="body">
+          <div class="tag">Free Fire</div>
+          <div class="title">Acc Full Skin Súng</div>
+          <div class="desc">Nhiều skin nâng cấp, ổn cho FPS.</div>
+          <div class="price">249.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Acc Full Skin Súng (FF)',249000,'https://cdn.oneesports.vn/cdn-data/sites/4/2024/03/FreeFire-Skin-Sung.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Acc Full Skin Súng','Tài khoản có skin súng cao cấp')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-game="freefire" data-id="ff-2">
+        <div class="imgwrap"><img src="https://cdn.oneesports.vn/cdn-data/sites/4/2023/09/FreeFire-Character-Dimitri.jpg" alt="FF nhân vật"></div>
+        <div class="body">
+          <div class="tag">Free Fire</div>
+          <div class="title">Acc Nhân Vật VIP</div>
+          <div class="desc">Chrono, Alok, DJ Alok, nhiều nhân vật.</div>
+          <div class="price">349.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Acc Nhân Vật VIP (FF)',349000,'https://cdn.oneesports.vn/cdn-data/sites/4/2023/09/FreeFire-Character-Dimitri.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Acc Nhân Vật VIP','Hàng có bảo hành demo 7 ngày')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ROBLOX -->
+  <section id="roblox" class="block" aria-labelledby="rb-title">
+    <div class="section-title">
+      <h3 id="rb-title">Acc Roblox</h3>
+      <div class="small">Robux & outfit VIP</div>
+    </div>
+
+    <div class="grid">
+      <article class="card" data-game="roblox" data-id="rb-500">
+        <div class="imgwrap"><img src="https://cdn.mos.cms.futurecdn.net/FRwH4usXBh4iScnK1JgT2D.jpg" alt="Roblox 500"></div>
+        <div class="body">
+          <div class="tag">Roblox</div>
+          <div class="title">Acc 500 Robux</div>
+          <div class="desc">Tài khoản có 500 Robux + outfit đẹp.</div>
+          <div class="price">199.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Acc 500 Robux',199000,'https://cdn.mos.cms.futurecdn.net/FRwH4usXBh4iScnK1JgT2D.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Acc 500 Robux','Có sẵn Robux, giao nhanh')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-game="roblox" data-id="rb-vip">
+        <div class="imgwrap"><img src="https://cdn.vox-cdn.com/thumbor/9_7m7UO1_ylKJyzXmpxSEuA1cEI=/0x0:1200x800/1200x800/filters:focal(504x304:696x496)/cdn.vox-cdn.com/uploads/chorus_image/image/72533465/Roblox_avatars.0.jpg" alt="Roblox VIP"></div>
+        <div class="body">
+          <div class="tag">Roblox</div>
+          <div class="title">Acc Roblox Outfit VIP</div>
+          <div class="desc">Outfit & item hiếm, acc đẹp để khoe.</div>
+          <div class="price">349.000₫</div>
+          <div class="actions">
+            <button class="btn-buy" onclick="openBuyModal('Acc Roblox Outfit VIP',349000,'https://cdn.vox-cdn.com/thumbor/9_7m7UO1_ylKJyzXmpxSEuA1cEI=/0x0:1200x800/1200x800/filters:focal(504x304:696x496)/cdn.vox-cdn.com/uploads/chorus_image/image/72533465/Roblox_avatars.0.jpg')">Mua ngay</button>
+            <button class="btn-info" onclick="openInfo('Acc Roblox Outfit VIP','Giao nhanh, hướng dẫn đổi pass')">Chi tiết</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact (anchor target) -->
+  <section id="contact" class="block" aria-labelledby="contact-title">
+    <div class="section-title">
+      <h3 id="contact-title">Liên hệ & Hỗ trợ</h3>
+      <div class="small">Hỗ trợ 24/7 — inbox để được tư vấn ngay</div>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <label class="small">Email</label>
+        <div style="background:var(--panel);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)">Stacieshop</div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <label class="small">Zalo / SĐT</label>
+        <div style="background:var(--panel);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)">+84 326078949</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer style="margin-top:18px;padding:18px 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="color:var(--muted)">© 2025 Stacie Shop — All rights reserved</div>
+    <div style="display:flex;gap:12px"><a style="color:var(--muted);text-decoration:none" href="#" aria-label="facebook">FB</a><a style="color:var(--muted);text-decoration:none" href="#" aria-label="instagram">IG</a></div>
+  </div>
+</footer>
+
+<!-- Floating chat -->
+<div class="chat" title="Chat với hỗ trợ" onclick="openChat()" aria-hidden>
+  <!-- chat icon -->
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#041426" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="#fff"/>
+  </svg>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal" role="document" id="modal-content">
+    <!-- dinamically injected -->
+  </div>
+</div>
+
+<script>
+  // small utilities
+  function fmt(v){ return v.toLocaleString('vi-VN') + '₫' }
+  let balance = 200000;
+  function changeBalance(delta){
+    balance = Math.max(0, balance + delta);
+    document.getElementById('ui-balance').textContent = fmt(balance);
+  }
+
+  // Buy modal: simulate quick checkout (demo only)
+  function openBuyModal(title,price,img){
+    const modal = document.getElementById('modal');
+    const box = document.getElementById('modal-content');
+    const html = `
+      <h4>Mua: ${escapeHtml(title)}</h4>
+      <div class="meta">Giá: <strong>${fmt(price)}</strong></div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <img src="${escapeHtml(img)}" alt="" style="width:120px;height:80px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.04)" />
+        <div>
+          <div class="small">Số dư hiện tại: <strong>${fmt(balance)}</strong></div>
+          <div class="small" style="margin-top:8px">Bạn sẽ nhận hướng dẫn đăng nhập ngay sau khi mua (demo)</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
+        <button class="btn-info" onclick="closeModal()">Hủy</button>
+        <button class="btn-buy" onclick="confirmBuy(${price}, '${escapeForJs(title)}')">Xác nhận</button>
+      </div>
+    `;
+    box.innerHTML = html;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function confirmBuy(price, titleEncoded){
+    const title = titleEncoded;
+    if(balance < price){
+      alert('Số dư không đủ. Vui lòng nạp thêm.');
+      return;
+    }
+    // deduct
+    balance -= price;
+    document.getElementById('ui-balance').textContent = fmt(balance);
+
+    // show success
+    const box = document.getElementById('modal-content');
+    box.innerHTML = `<h4>Thanh toán thành công</h4>
+      <div class="meta">Bạn đã mua: <strong>${escapeHtml(title)}</strong></div>
+      <div class="result" style="margin-top:10px">Hướng dẫn đã gửi vào Email (demo)</div>
+      <div style="display:flex;justify-content:flex-end;margin-top:12px">
+        <button class="btn-buy" onclick="closeModal()">Đóng</button>
+      </div>`;
+  }
+
+  function openInfo(title,desc){
+    const modal = document.getElementById('modal');
+    const box = document.getElementById('modal-content');
+    box.innerHTML = `<h4>${escapeHtml(title)}</h4>
+      <div class="meta">${escapeHtml(desc)}</div>
+      <div style="display:flex;justify-content:flex-end;margin-top:12px">
+        <button class="btn-ghost" onclick="closeModal()">Đóng</button>
+      </div>`;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function closeModal(){ const modal = document.getElementById('modal'); modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+
+  // click outside to close
+  document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+
+  // floating chat (demo open quick contact)
+  function openChat(){
+    const modal = document.getElementById('modal');
+    const box = document.getElementById('modal-content');
+    box.innerHTML = `<h4>Chat trực tiếp</h4>
+      <div class="meta">Nhắn tin để được hỗ trợ nhanh (demo)</div>
+      <div style="margin-top:8px"><input id="msg" placeholder="Viết tin..." style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:#071021;color:#fff" /></div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+        <button class="btn-ghost" onclick="closeModal()">Đóng</button>
+        <button class="btn-buy" onclick="sendMsg()">Gửi</button>
+      </div>`;
+    modal.style.display='flex'; modal.setAttribute('aria-hidden','false');
+  }
+  function sendMsg(){ const v=document.getElementById('msg').value||'(không có nội dung)'; alert('Demo: đã gửi tin nhắn: '+v); closeModal(); }
+
+  // small helpers to escape
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+  function escapeForJs(s){ return escapeHtml(s).replace(/"/g,'').replace(/'/g,''); }
+
+  // keyboard close
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  // init displayed balance
+  document.getElementById('ui-balance').textContent = fmt(balance);
+
+  // smooth highlight current nav on scroll (optional)
+  const sections = Array.from(document.querySelectorAll('main section, section.hero'));
+  const navLinks = Array.from(document.querySelectorAll('header nav a'));
+  function onScroll(){
+    const pos = window.scrollY + 120;
+    let current = null;
+    sections.forEach(s=>{ if(s.offsetTop <= pos) current = s });
+    if(current){
+      const id = current.id;
+      navLinks.forEach(a=>{ a.style.opacity = (a.getAttribute('href') === '#'+id) ? '1' : '0.7' });
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+</script>
+</body>
+</html>
